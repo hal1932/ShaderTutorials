@@ -25,7 +25,7 @@
             #pragma shader_feature_local ENABLE_LEVELS
             #pragma shader_feature_local ENABLE_BRIGHTNESS_CONTRAST
             #pragma shader_feature_local ENABLE_EXPOSURE
-            #pragma shader_feature_local ENABLE_HSL
+            #pragma shader_feature_local ENABLE_LUT
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "ColorCorrectionInput.hlsl"

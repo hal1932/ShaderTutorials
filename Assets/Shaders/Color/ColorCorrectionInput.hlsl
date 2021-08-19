@@ -20,3 +20,13 @@ float LevelsShadow;
 float LevelsHighlight;
 float LevelsBlackPoint;
 float LevelsWhitePoint;
+
+float Brightness;
+float Contrast;
+
+float ExposureAmount;
+float ExposureOffset;
+float GammaCorrection;
+
+TEXTURE2D(LutTexture);
+

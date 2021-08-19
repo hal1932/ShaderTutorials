@@ -25,7 +25,7 @@ half4 FragmentGaussianHorizontal(Varyings input) : SV_Target
 
 half4 FragmentGaussianVertical(Varyings input) : SV_Target
 {
-    float height = _ScreenParams.x;
+    float height = _ScreenParams.y;
     float2 offsetUnit = float2(0.0, UvOffsetSize / height);
     return CalcGaussianFromPascalsTriangle(TEXTURE2D_ARGS(_MainTex, linear_clamp_sampler), input.uv, offsetUnit);
 }

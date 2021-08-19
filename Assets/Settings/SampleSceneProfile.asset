@@ -92,35 +92,6 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
---- !u!114 &-7822537014296497751
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d0f20ae2acb7004a8056bf21e379898, type: 3}
-  m_Name: HSL
-  m_EditorClassIdentifier: 
-  active: 1
-  m_AdvancedMode: 0
-  Hue:
-    m_OverrideState: 0
-    m_Value: 0
-    min: -180
-    max: 180
-  Saturation:
-    m_OverrideState: 0
-    m_Value: 0
-    min: -100
-    max: 100
-  Lightness:
-    m_OverrideState: 0
-    m_Value: 0
-    min: -100
-    max: 100
 --- !u!114 &-7011558710299706105
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -184,6 +155,33 @@ MonoBehaviour:
     m_Value: 1
     min: 1
     max: 3
+--- !u!114 &-1504725635528833032
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44553184f133d124da0105282dae4a57, type: 3}
+  m_Name: BrightnessContrast
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  IsEnabled:
+    m_OverrideState: 1
+    m_Value: 1
+  Brightness:
+    m_OverrideState: 1
+    m_Value: 0
+    min: -1
+    max: 1
+  Contrast:
+    m_OverrideState: 1
+    m_Value: 0
+    min: -1
+    max: 1
 --- !u!114 &-514306776345794280
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -198,6 +196,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 0
   m_AdvancedMode: 0
+  IsEnabled:
+    m_OverrideState: 1
+    m_Value: 1
   Shadow:
     m_OverrideState: 1
     m_Value: 0
@@ -238,9 +239,9 @@ MonoBehaviour:
   - {fileID: 4486581265836388261}
   - {fileID: -7892087856906944122}
   - {fileID: -514306776345794280}
-  - {fileID: 7974068302196416206}
-  - {fileID: 2224021594712582366}
-  - {fileID: -7822537014296497751}
+  - {fileID: -1504725635528833032}
+  - {fileID: 4168191978477485179}
+  - {fileID: 5665997480362324969}
 --- !u!114 &849379129802519247
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -258,7 +259,7 @@ MonoBehaviour:
   mode:
     m_OverrideState: 1
     m_Value: 2
---- !u!114 &2224021594712582366
+--- !u!114 &4168191978477485179
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -270,20 +271,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7ff4cd597fa5bd408dbfc7548f21467, type: 3}
   m_Name: Exposure
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
+  IsEnabled:
+    m_OverrideState: 1
+    m_Value: 1
   Amount:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
     min: -20
     max: 20
   Offset:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
     min: -0.5
     max: 0.5
   GammaCorrection:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
     min: 0.01
     max: 2
@@ -314,7 +318,7 @@ MonoBehaviour:
     m_Value: 1.3
     min: 0
     max: 5
---- !u!114 &7974068302196416206
+--- !u!114 &5665997480362324969
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -323,18 +327,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44553184f133d124da0105282dae4a57, type: 3}
-  m_Name: BrightnessContrast
+  m_Script: {fileID: 11500000, guid: 28e0401f4f03e1440a88a502f26d0d13, type: 3}
+  m_Name: Lut
   m_EditorClassIdentifier: 
   active: 1
   m_AdvancedMode: 0
-  Brightness:
+  Texture:
     m_OverrideState: 1
-    m_Value: 0
-    min: -150
-    max: 150
-  Contrast:
-    m_OverrideState: 1
-    m_Value: 0
-    min: -50
-    max: 100
+    m_Value: {fileID: 2800000, guid: 9c7d0aa169f42c143859f23abea4ca2e, type: 3}

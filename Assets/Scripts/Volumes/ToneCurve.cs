@@ -25,7 +25,7 @@ namespace Volumes
             return true;
         }
 
-        public bool IsActive() => Curve.overrideState && Curve.value != null;
+        public bool IsActive() => Curve.value != null;
         public bool IsTileCompatible() => false;
     }
 }
