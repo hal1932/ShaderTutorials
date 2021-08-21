@@ -28,5 +28,5 @@ float ExposureAmount;
 float ExposureOffset;
 float GammaCorrection;
 
-TEXTURE2D(LutTexture);
+TEXTURE3D(LutTexture);
 

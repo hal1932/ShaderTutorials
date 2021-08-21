@@ -30,17 +30,13 @@ half3 Exposure(half3 color, float amount, float gammaCorrection)
     return color;
 }
 
-half3 Lut(half3 color, TEXTURE2D(lut))
+half3 Lut(half3 color, TEXTURE3D(lut))
 {
-    color.r = SAMPLE_TEXTURE2D(lut, point_clamp_sampler, float2(color.r, 0.875)).r;
-    color.g = SAMPLE_TEXTURE2D(lut, linear_clamp_sampler, float2(color.g, 0.625)).g;
-    color.b = SAMPLE_TEXTURE2D(lut, linear_clamp_sampler, float2(color.b, 0.375)).b;
-    return color;
+    return SAMPLE_TEXTURE3D(lut, linear_clamp_sampler, color).rgb;
 }
 
 half4 Fragment(Varyings input) : SV_Target
 {
-    //return half4(input.uv, 0, 1);
     half4 color = SAMPLE_TEXTURE2D(_MainTex, linear_clamp_sampler, input.uv);
 
     #if ENABLE_TONE_CURVE

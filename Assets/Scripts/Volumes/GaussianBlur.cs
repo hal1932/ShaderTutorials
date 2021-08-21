@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
 
 namespace Volumes
 {
@@ -19,7 +18,7 @@ namespace Volumes
     }
 
     [Serializable]
-    public class GaussianBlur : VolumeComponent, IPostProcessComponent
+    public class GaussianBlur : VolumeComponentBase
     {
         public GaussianMethodParameter Method = new GaussianMethodParameter(GaussianMethod.PascalsTriangle);
         public ClampedIntParameter Radius = new ClampedIntParameter(1, 1, 9);
@@ -56,8 +55,7 @@ namespace Volumes
             return true;
         }
 
-        public bool IsActive() => Method.overrideState;
-        public bool IsTileCompatible() => false;
+        public override bool IsActive() => Method.overrideState;
 
         private int _lastRadius;
         private float _lastSigma;

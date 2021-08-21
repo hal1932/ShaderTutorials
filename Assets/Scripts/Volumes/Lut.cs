@@ -1,15 +1,16 @@
 ﻿using System;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
 
 namespace Volumes
 {
     [Serializable]
-    public class Lut : VolumeComponent, IPostProcessComponent
+    public class Lut : VolumeComponentBase
     {
-        public TextureParameter Texture = new TextureParameter(null);
+        // TextureParameter.value 経由で正しくデータを取得設定できないことが多いのでAltVolume.csに移動
+        //public TextureParameter Texture = new TextureParameter(null);
+        public BoolParameter IsEnabled = new BoolParameter(false);
 
-        public bool IsActive() => Texture.value != null;
-        public bool IsTileCompatible() => false;
+        //public bool IsActive() => Texture.value != null;
+        public override bool IsActive() => IsEnabled.value;
     }
 }

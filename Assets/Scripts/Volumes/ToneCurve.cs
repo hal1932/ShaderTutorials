@@ -1,12 +1,11 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
 
 namespace Volumes
 {
     [Serializable]
-    public class ToneCurve : VolumeComponent, IPostProcessComponent
+    public class ToneCurve : VolumeComponentBase
     {
         public AnimationCurveParameter Curve = new AnimationCurveParameter(null);
 
@@ -25,7 +24,6 @@ namespace Volumes
             return true;
         }
 
-        public bool IsActive() => Curve.value != null;
-        public bool IsTileCompatible() => false;
+        public override bool IsActive() => Curve.value != null;
     }
 }

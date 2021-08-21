@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -75,5 +76,18 @@ public struct CommandBufferFromPoolScope : IDisposable
     public void Dispose()
     {
         CommandBufferPool.Release(Command);
+    }
+}
+
+public class AssetEditingScope : Disposable
+{
+    public AssetEditingScope()
+    {
+        AssetDatabase.StartAssetEditing();
+        OnDispose = _ =>
+        {
+            AssetDatabase.StopAssetEditing();
+            AssetDatabase.Refresh();
+        };
     }
 }

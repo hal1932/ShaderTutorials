@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using Volumes;
@@ -9,18 +11,27 @@ namespace RendererFeatures.Color
     {
         public ColorCorrectionRenderPass()
         {
-            _tone = VolumeManager.instance.stack.GetComponent<ToneCurve>();
-            _levels = VolumeManager.instance.stack.GetComponent<Levels>();
-            _brightnessContrast = VolumeManager.instance.stack.GetComponent<BrightnessContrast>();
-            _exposure = VolumeManager.instance.stack.GetComponent<Exposure>();
-            _lut = VolumeManager.instance.stack.GetComponent<Lut>();
+            TVolume GetVolume<TVolume>()
+                where TVolume : VolumeComponentBase
+            {
+                var volume = VolumeManager.instance.stack.GetComponent<TVolume>();
+                _volumes.Add(volume);
+                return volume;
+            }
+
+            _tone = GetVolume<ToneCurve>();
+            _levels = GetVolume<Levels>();
+            _brightnessContrast = GetVolume<BrightnessContrast>();
+            _exposure = GetVolume<Exposure>();
+            _lut = GetVolume<Lut>();
+
+            _altVolume = GameObject.FindObjectOfType<AltVolume>();
+            Debug.Log(_altVolume.LutTexture.width);
 
             var shader = Shader.Find("Hidden/ColorCorrection");
             _material = CoreUtils.CreateEngineMaterial(shader);
 
             _toneCurveLut = new Texture2D(256, 1, TextureFormat.R16, false);
-
-            _t = Resources.Load<Texture2D>("BaseLut");
         }
 
         protected override void OnCleanup()
@@ -30,6 +41,11 @@ namespace RendererFeatures.Color
 
         protected override void OnExecute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
+            if (_volumes.All(v => !v.IsActive()))
+            {
+                return;
+            }
+
             var cmd = CommandBufferPool.Get("ColorCorrection");
             using (new CommandBufferFromPoolScope(cmd))
             {
@@ -42,7 +58,7 @@ namespace RendererFeatures.Color
                     _material.SetKeyword("ENABLE_TONE_CURVE", isToneCurveEnabled);
                     if (isToneCurveEnabled)
                     {
-                        _tone.CalcCurveLut(_toneCurveLut);
+                        _tone.CalcCurveLut(_toneCurveLut);// 重い
                         _material.SetTexture("ToneCurveLut", _toneCurveLut);
                     }
 
@@ -73,12 +89,10 @@ namespace RendererFeatures.Color
                     }
 
                     var isLutEnabled = _lut?.IsActive() ?? false;
-                    //_material.SetKeyword("ENABLE_LUT", isLutEnabled);
-                    _material.SetKeyword("ENABLE_LUT", true);
-                    //if (isExposureEnabled)
+                    _material.SetKeyword("ENABLE_LUT", isLutEnabled);
+                    if (isLutEnabled)
                     {
-                        //_material.SetTexture("LutTexture", _lut.Texture.value);
-                        _material.SetTexture("LutTexture", _t);
+                        _material.SetTexture("LutTexture", _altVolume.LutTexture);
                     }
 
                     cmd.Blit(target, temp, _material);
@@ -89,15 +103,17 @@ namespace RendererFeatures.Color
             }
         }
 
+        private List<VolumeComponentBase> _volumes = new List<VolumeComponentBase>();
+
         private ToneCurve _tone;
         private Levels _levels;
         private BrightnessContrast _brightnessContrast;
         private Exposure _exposure;
         private Lut _lut;
+        private AltVolume _altVolume;
 
         private Material _material;
         private Texture2D _toneCurveLut;
-        private Texture2D _t;
     }
 
     public class ColorCorrectionRendererFeature : RendererFeatureBase<ColorCorrectionRenderPass>

@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
 
 namespace Volumes
 {
@@ -20,7 +19,7 @@ namespace Volumes
     }
 
     [Serializable]
-    public class UpScaling : VolumeComponent, IPostProcessComponent
+    public class UpScaling : VolumeComponentBase
     {
         public UpScalingMethodParameter Method = new UpScalingMethodParameter(UpScalingMethod.Blinear);
         public ClampedFloatParameter UvOffsetUnit = new ClampedFloatParameter(1.0f, 0.0f, 2.0f);
@@ -29,7 +28,6 @@ namespace Volumes
         public static readonly int[] GaussianKernelSizeCandidates = new[] { 3, 5, 7 };
         public int GaussianKernelSize => GaussianKernelSizeCandidates[GaussianRadius.value - 1];
 
-        public bool IsActive() => Method.overrideState;
-        public bool IsTileCompatible() => false;
+        public override bool IsActive() => Method.overrideState;
     }
 }

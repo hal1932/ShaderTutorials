@@ -330,8 +330,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e0401f4f03e1440a88a502f26d0d13, type: 3}
   m_Name: Lut
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
-  Texture:
+  IsEnabled:
     m_OverrideState: 1
-    m_Value: {fileID: 2800000, guid: 9c7d0aa169f42c143859f23abea4ca2e, type: 3}
+    m_Value: 1

@@ -6,6 +6,6 @@ namespace Volumes
     public abstract class VolumeComponentBase : VolumeComponent, IPostProcessComponent
     {
         public abstract bool IsActive();
-        public bool IsTileCompatible() => false;
+        public virtual bool IsTileCompatible() => false;
     }
 }
