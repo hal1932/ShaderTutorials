@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine.Rendering;
 
-namespace Volumes
+namespace Volumes.Blurs
 {
     public enum GaussianMethod
     {

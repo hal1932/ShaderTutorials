@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace Volumes
+namespace Volumes.Colors
 {
     [Serializable]
     public class ToneCurve : VolumeComponentBase

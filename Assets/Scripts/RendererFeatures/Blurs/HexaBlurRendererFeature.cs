@@ -2,7 +2,7 @@
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-namespace RendererFeatures.Blur
+namespace RendererFeatures.Blurs
 {
     public class HexaBlurRenderPass : RenderPassBase
     {

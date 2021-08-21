@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using Volumes;
+using Volumes.Colors;
 
-namespace RendererFeatures.Color
+namespace RendererFeatures.Colors
 {
     public class ColorCorrectionRenderPass : RenderPassBase
     {
@@ -26,7 +27,6 @@ namespace RendererFeatures.Color
             _lut = GetVolume<Lut>();
 
             _altVolume = GameObject.FindObjectOfType<AltVolume>();
-            Debug.Log(_altVolume.LutTexture.width);
 
             var shader = Shader.Find("Hidden/ColorCorrection");
             _material = CoreUtils.CreateEngineMaterial(shader);

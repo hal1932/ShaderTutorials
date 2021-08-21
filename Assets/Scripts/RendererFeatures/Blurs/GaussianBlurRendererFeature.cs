@@ -2,9 +2,9 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
-using Volumes;
+using Volumes.Blurs;
 
-namespace RendererFeatures.Blur
+namespace RendererFeatures.Blurs
 {
     public class GanssianBlurRenderPass : RenderPassBase<GaussianBlur>
     {

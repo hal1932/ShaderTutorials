@@ -2,9 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
-using Volumes;
+using Volumes.Scalings;
 
-namespace RendererFeatures.Scaling
+namespace RendererFeatures.Scalings
 {
     public class UpScalingRenderPass : RenderPassBase<UpScaling>
     {

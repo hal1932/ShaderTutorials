@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine.Rendering;
 
-namespace Volumes
+namespace Volumes.Scalings
 {
     public enum UpScalingMethod
     {
