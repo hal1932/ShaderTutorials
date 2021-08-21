@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using Volumes.Blurs;
 
 namespace RendererFeatures.Blurs
 {
-    public class HexaBlurRenderPass : RenderPassBase
+    public class HexaBlurRenderPass : RenderPassBase<HexaBlur>
     {
         public HexaBlurRenderPass()
         {

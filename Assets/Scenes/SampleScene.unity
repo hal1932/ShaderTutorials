@@ -666,7 +666,7 @@ PrefabInstance:
     - target: {fileID: 7876625027489977638, guid: db3947e2c33011d4ab4e0cb3c721f182, type: 3}
       propertyPath: LutTexture
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11700000, guid: b2359fc71a3050c4ab74b94f3a58a2a7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db3947e2c33011d4ab4e0cb3c721f182, type: 3}
 --- !u!1 &1458322688

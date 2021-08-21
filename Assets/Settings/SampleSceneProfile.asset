@@ -65,14 +65,13 @@ MonoBehaviour:
   m_Name: ColorCorrection
   m_EditorClassIdentifier: 
   active: 0
+  <displayName>k__BackingField: 
   m_AdvancedMode: 0
   Curve:
     m_OverrideState: 1
     m_Value:
-      serializedVersion: 2
       m_Curve:
-      - serializedVersion: 3
-        time: 0
+      - time: 0
         value: 0
         inSlope: 0
         outSlope: 0
@@ -80,8 +79,7 @@ MonoBehaviour:
         weightedMode: 0
         inWeight: 0
         outWeight: 0
-      - serializedVersion: 3
-        time: 1
+      - time: 1
         value: 1
         inSlope: 0
         outSlope: 0
@@ -128,6 +126,23 @@ MonoBehaviour:
   rounded:
     m_OverrideState: 0
     m_Value: 0
+--- !u!114 &-5862779807572263109
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2e8fdfecff85a54b9a9f4189376bde4, type: 3}
+  m_Name: HexaBlur
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  IsEnabled:
+    m_OverrideState: 1
+    m_Value: 1
 --- !u!114 &-5012985632872226657
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -168,6 +183,7 @@ MonoBehaviour:
   m_Name: BrightnessContrast
   m_EditorClassIdentifier: 
   active: 0
+  <displayName>k__BackingField: 
   m_AdvancedMode: 0
   IsEnabled:
     m_OverrideState: 1
@@ -195,6 +211,7 @@ MonoBehaviour:
   m_Name: Levels
   m_EditorClassIdentifier: 
   active: 0
+  <displayName>k__BackingField: 
   m_AdvancedMode: 0
   IsEnabled:
     m_OverrideState: 1
@@ -237,11 +254,25 @@ MonoBehaviour:
   - {fileID: -7011558710299706105}
   - {fileID: -5012985632872226657}
   - {fileID: 4486581265836388261}
-  - {fileID: -7892087856906944122}
-  - {fileID: -514306776345794280}
-  - {fileID: -1504725635528833032}
-  - {fileID: 4168191978477485179}
-  - {fileID: 5665997480362324969}
+  - {fileID: -5862779807572263109}
+  - {fileID: 672094488963369678}
+--- !u!114 &672094488963369678
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faed47d3aee42944eb2fd7eeb89f4cd7, type: 3}
+  m_Name: KawaseBlur
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  IsEnabled:
+    m_OverrideState: 1
+    m_Value: 1
 --- !u!114 &849379129802519247
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -272,6 +303,7 @@ MonoBehaviour:
   m_Name: Exposure
   m_EditorClassIdentifier: 
   active: 0
+  <displayName>k__BackingField: 
   m_AdvancedMode: 0
   IsEnabled:
     m_OverrideState: 1
@@ -330,7 +362,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e0401f4f03e1440a88a502f26d0d13, type: 3}
   m_Name: Lut
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
+  <displayName>k__BackingField: 
   m_AdvancedMode: 0
   IsEnabled:
     m_OverrideState: 1

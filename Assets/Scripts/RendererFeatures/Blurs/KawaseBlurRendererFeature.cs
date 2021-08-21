@@ -2,10 +2,11 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using Volumes.Blurs;
 
 namespace RendererFeatures.Blurs
 {
-    public class KawaseBlurRenderPass : RenderPassBase
+    public class KawaseBlurRenderPass : RenderPassBase<KawaseBlur>
     {
         public enum ProfilingEvent
         {

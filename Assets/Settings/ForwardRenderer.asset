@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5aad1b1d77a72f41b7b61d47bdb3559, type: 3}
   m_Name: NewKawaseBlurRendererFeature
   m_EditorClassIdentifier: 
-  m_Active: 0
+  m_Active: 1
 --- !u!114 &2336566074433087856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,4 +125,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9182a02af04a64aae06d42ad2074bc, type: 3}
   m_Name: NewHexaBlurRendererFeature
   m_EditorClassIdentifier: 
-  m_Active: 0
+  m_Active: 1
