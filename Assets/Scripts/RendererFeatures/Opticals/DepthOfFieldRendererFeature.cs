@@ -35,8 +35,14 @@ namespace RendererFeatures.Blurs
         protected override void OnUpdateRenderTargets()
         {
             _kawaseBlurContext.RenderTargetDesc = RenderTargetDescs[0];
-            _gaussianBlurContext.RenderTargetDesc = RenderTargetDescs[0];
-            _hexaBlurContext.RenderTargetDesc = RenderTargetDescs[0];
+
+            _gaussianBlurContext.WorkBufferDesc = RenderTargetDescs[0];
+            _gaussianBlurContext.WorkBufferDesc.width /= 2;
+            _gaussianBlurContext.WorkBufferDesc.height /= 2;
+
+            _hexaBlurContext.WorkBufferDesc = RenderTargetDescs[0];
+            _hexaBlurContext.WorkBufferDesc.width /= 2;
+            _hexaBlurContext.WorkBufferDesc.height /= 2;
         }
 
         protected override void OnCleanup()

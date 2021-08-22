@@ -16,9 +16,9 @@ namespace Renderers.Blurs
         public const int MaxWeightsRadius = 16;
 
         public RenderTargetIdentifier RenderTarget;
-        public RenderTextureDescriptor RenderTargetDesc;
 
         public int WorkBuffer;
+        public RenderTextureDescriptor WorkBufferDesc;
 
         public GaussianBlurMethod Method;
         public uint Radius;
@@ -67,7 +67,7 @@ namespace Renderers.Blurs
 
         public void GetWorkBuffer(ref GaussianBlurContext context, CommandBuffer cmd)
         {
-            cmd.GetTemporaryRT(context.WorkBuffer, context.RenderTargetDesc, FilterMode.Bilinear);
+            cmd.GetTemporaryRT(context.WorkBuffer, context.WorkBufferDesc, FilterMode.Bilinear);
         }
 
         public void ReleaseWorkBuffer(ref GaussianBlurContext context, CommandBuffer cmd)

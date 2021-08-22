@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Rendering;
 
 namespace Renderers.Blurs
@@ -7,13 +6,13 @@ namespace Renderers.Blurs
     public struct HexaBlurContext : IRendererContext
     {
         public RenderTargetIdentifier RenderTarget;
-        public RenderTextureDescriptor RenderTargetDesc;
 
         public uint Radius;
         public float StepScale;
 
         public int WorkBuffer0;
         public int WorkBuffer1;
+        public RenderTextureDescriptor WorkBufferDesc;
 
         public bool NeedToUpdateWorkBuffers()
         {
@@ -31,8 +30,9 @@ namespace Renderers.Blurs
 
         public void GetWorkBuffers(ref HexaBlurContext context, CommandBuffer cmd)
         {
-            cmd.GetTemporaryRT(context.WorkBuffer0, context.RenderTargetDesc, FilterMode.Bilinear);
-            cmd.GetTemporaryRT(context.WorkBuffer1, context.RenderTargetDesc, FilterMode.Bilinear);
+            var desc = context.WorkBufferDesc;
+            cmd.GetTemporaryRT(context.WorkBuffer0, desc, FilterMode.Bilinear);
+            cmd.GetTemporaryRT(context.WorkBuffer1, desc, FilterMode.Bilinear);
         }
 
         public void ReleaseWorkBuffers(ref HexaBlurContext context, CommandBuffer cmd)
