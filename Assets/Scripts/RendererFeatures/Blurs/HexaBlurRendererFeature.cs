@@ -26,6 +26,9 @@ namespace RendererFeatures.Blurs
                 var target = RenderTargets[0];
                 var targetDesc = RenderTargetDescs[0];
 
+                _material.SetInt("Radius", 3);
+                _material.SetFloat("StepScale", 1.0f);
+
                 using (var up = new TempRenderTarget(cmd, targetDesc, "Hexa Up"))
                 using (var left = new TempRenderTarget(cmd, targetDesc, "Hexa Left"))
                 {

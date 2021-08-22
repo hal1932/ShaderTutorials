@@ -47,6 +47,9 @@ namespace Volumes.Opticals
 
         public ClampedIntParameter KawaseRadius = new ClampedIntParameter(3, 1, 5);
 
+        public ClampedIntParameter HexaRadius = new ClampedIntParameter(3, 0, 10);
+        public ClampedFloatParameter HexaStepScale = new ClampedFloatParameter(1.0f, 0.1f, 3.0f);
+
         public ClampedFloatParameter Aperture = new ClampedFloatParameter(0.5f, 0, 1);
         public ClampedFloatParameter FocalLength = new ClampedFloatParameter(0.5f, 0, 1);
         public ClampedFloatParameter Distance = new ClampedFloatParameter(0.5f, 0, 1);

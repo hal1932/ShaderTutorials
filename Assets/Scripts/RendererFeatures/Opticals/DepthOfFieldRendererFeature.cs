@@ -26,12 +26,17 @@ namespace RendererFeatures.Blurs
             _gaussianBlur = new GaussianBlurRenderer();
             _gaussianBlur.CreateMaterial();
             _gaussianBlurContext = new GaussianBlurContext();
+
+            _hexaBlur = new HexaBlurRenderer();
+            _hexaBlur.CreateMaterial();
+            _hexaBlurContext = new HexaBlurContext();
         }
 
         protected override void OnUpdateRenderTargets()
         {
             _kawaseBlurContext.RenderTargetDesc = RenderTargetDescs[0];
             _gaussianBlurContext.RenderTargetDesc = RenderTargetDescs[0];
+            _hexaBlurContext.RenderTargetDesc = RenderTargetDescs[0];
         }
 
         protected override void OnCleanup()
@@ -84,6 +89,19 @@ namespace RendererFeatures.Blurs
 
                     case BlurMethod.Hexa:
                         {
+                            _hexaBlurContext.Radius = (uint)Volume.HexaRadius.value;
+                            _hexaBlurContext.StepScale = Volume.HexaStepScale.value;
+
+                            var contextOp = new HexaBlurContextOperator();
+                            if (_hexaBlurContext.NeedToUpdateWorkBuffers())
+                            {
+                                contextOp.UpdateWorkBufferDescs(ref _hexaBlurContext);
+                            }
+
+                            _hexaBlurContext.RenderTarget = RenderTargets[0];
+                            contextOp.GetWorkBuffers(ref _hexaBlurContext, cmd);
+                            _hexaBlur.Render(ref _hexaBlurContext, cmd);
+                            contextOp.ReleaseWorkBuffers(ref _hexaBlurContext, cmd);
                         }
                         break;
                 }
@@ -98,6 +116,9 @@ namespace RendererFeatures.Blurs
 
         private GaussianBlurRenderer _gaussianBlur;
         private GaussianBlurContext _gaussianBlurContext;
+
+        private HexaBlurRenderer _hexaBlur;
+        private HexaBlurContext _hexaBlurContext;
     }
 
     public class DepthOfFieldRendererFeature : RendererFeatureBase<DepthOfFieldRendererPass>
