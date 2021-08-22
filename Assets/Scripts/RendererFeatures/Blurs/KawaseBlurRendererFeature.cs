@@ -24,7 +24,7 @@ namespace RendererFeatures.Blurs
 
         protected override void OnCleanup()
         {
-            //CoreUtils.Destroy(_material);
+            CoreUtils.Destroy(_material);
         }
 
         protected override void OnExecute(ScriptableRenderContext context, ref RenderingData renderingData)
@@ -71,6 +71,7 @@ namespace RendererFeatures.Blurs
                 }
 
                 // çáê¨
+                _material.SetFloat("BlurSize", BufferCount);
                 for (var i = 0; i < _textures.Length; ++i)
                 {
                     cmd.SetGlobalTexture(_textures[i], _textures[i]);

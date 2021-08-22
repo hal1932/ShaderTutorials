@@ -1,5 +1,5 @@
 #include "Assets/Shaders/Utils/FullScreenVert.hlsl"
-#include "Assets/Shaders/Utils/Gaussian.hlsl"
+#include "Assets/Shaders/Blurs/GaussianBlurHelper.hlsl"
 
 half4 FragmentBlurUpScale(Varyings input) : SV_Target
 {

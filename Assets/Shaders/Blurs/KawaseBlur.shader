@@ -38,6 +38,8 @@
             #pragma vertex FullScreenVert
             #pragma fragment FragmentComposite
 
+            #pragma shader_feature_local BLUR_SIZE
+
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "KawaseBlurInput.hlsl"
             #include "KawaseBlurPass.hlsl"

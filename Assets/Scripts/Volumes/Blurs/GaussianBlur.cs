@@ -1,18 +1,13 @@
 ﻿using System;
+using Renderers.Blurs;
 using UnityEngine.Rendering;
 
 namespace Volumes.Blurs
 {
-    public enum GaussianMethod
-    {
-        PascalsTriangle,
-        Weights,
-    }
-
     [Serializable]
-    public class GaussianMethodParameter : VolumeParameter<GaussianMethod>
+    public class GaussianMethodParameter : VolumeParameter<GaussianBlurMethod>
     {
-        public GaussianMethodParameter(GaussianMethod method)
+        public GaussianMethodParameter(GaussianBlurMethod method)
             : base(method, false)
         { }
     }
@@ -20,7 +15,7 @@ namespace Volumes.Blurs
     [Serializable]
     public class GaussianBlur : VolumeComponentBase
     {
-        public GaussianMethodParameter Method = new GaussianMethodParameter(GaussianMethod.PascalsTriangle);
+        public GaussianMethodParameter Method = new GaussianMethodParameter(GaussianBlurMethod.PascalsTriangle);
         public ClampedIntParameter Radius = new ClampedIntParameter(1, 1, 9);
         public ClampedFloatParameter Sigma = new ClampedFloatParameter(0.01f, 0.01f, 5.0f);
 
@@ -47,10 +42,6 @@ namespace Volumes.Blurs
             {
                 weights[i] = weights[i] / total;
             }
-            //for (var i = Radius.value; i < weights.Length; ++i)
-            //{
-            //    weights[i] = 0.0f;
-            //}
 
             return true;
         }

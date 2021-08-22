@@ -1,4 +1,5 @@
 ﻿using System;
+using Renderers.Blurs;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -45,7 +46,7 @@ namespace RendererFeatures.Blurs
 
             switch (_currentMethod)
             {
-                case GaussianMethod.PascalsTriangle:
+                case GaussianBlurMethod.PascalsTriangle:
                     _material.SetKeyword("GAUSSIAN_METHOD_PASCALS", true);
                     _material.SetKeyword("GAUSSIAN_METHOD_WEIGHTS", false);
                     Array.ForEach(
@@ -53,7 +54,7 @@ namespace RendererFeatures.Blurs
                         size => _material.SetKeyword($"GAUSSIAN_KERNEL_{size}", size == Volume.PascalsRadius));
                     break;
 
-                case GaussianMethod.Weights:
+                case GaussianBlurMethod.Weights:
                     _material.SetKeyword("GAUSSIAN_METHOD_PASCALS", false);
                     _material.SetKeyword("GAUSSIAN_METHOD_WEIGHTS", true);
                     Volume.CalcWeights(_weights);
@@ -64,10 +65,9 @@ namespace RendererFeatures.Blurs
         }
 
         private Material _material;
-        private GaussianMethod _currentMethod;
+        private GaussianBlurMethod _currentMethod;
 
-        private const int GAUSSIAN_WEIGHTS_MAX = 16;
-        private float[] _weights = new float[GAUSSIAN_WEIGHTS_MAX];
+        private float[] _weights = new float[GaussianBlurContext.MaxWeightsRadius];
     }
 
     public class GaussianBlurRendererFeature : RendererFeatureBase<GanssianBlurRenderPass>
